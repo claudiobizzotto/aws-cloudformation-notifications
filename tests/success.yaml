@@ -1,0 +1,16 @@
+---
+# Stack name: cloudformation-notifications-test-success
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Test CloudFormation SNS notifications with a successful build"
+
+Parameters: 
+  BucketName: 
+    Type: "String"
+    Default: "testing-cloud-formation-sns"
+
+Resources:
+  # Try to create a dummy S3 bucket - this should succeed and generate a CREATE_COMPLETE
+  SNSEmailSuccess:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Ref "BucketName"

@@ -1,0 +1,13 @@
+---
+# Stack name: cloudformation-notifications-test-failure
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Test CloudFormation SNS notifications with a failed build"
+
+Resources:
+  # Try to create an SNS topic with a protocol that doesn't exist - this should fail and generate a ROLLBACK_IN_PROGRESS
+  SNSEmailFailure:
+    Type: "AWS::SNS::Topic"
+    Properties:
+      Subscription:
+        - Endpoint: "xxx://i-dont-exist"
+          Protocol: "xxx"
